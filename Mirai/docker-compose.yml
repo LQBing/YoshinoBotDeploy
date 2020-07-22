@@ -1,0 +1,31 @@
+version: "3"
+services:
+  miraiok:
+    image: lqbing/miraiok
+    restart: always
+    env_file: .env
+    volumes:
+      - ./data/miraok/log:/workdir/log
+      - ./data/miraok/tmp:/tmp
+    stdin_open: true
+    tty: true
+    networks:
+      - bot_net
+      
+  bot:
+    image: lqbing/yoshino
+    restart: always
+    env_file: .env
+    ports: 
+      - 8000:8000
+    volumes:
+      - ./data/bot/log:/workdir/log
+      - ./data/bot/yobot_data:/workdir/hoshino/modules/yobot/yobot/src/client/yobot_data
+      - ./data/bot/static:/workdir/hoshino/modules/yobot/yobot/src/client/public/static/
+      - ./data/bot/res:/workdir/res
+    networks:
+      - bot_net
+
+networks:
+  bot_net:
+    driver: bridge
