@@ -4,7 +4,7 @@
 
 [YoshinoBot](https://github.com/LQBing/YoshinoBot)
 
-[docker-MiraiOK](https://github.com/LQBing/docker-MiraiOK)
+[cqhttp](https://cqhttp.cc/docs/4.15/#/Docker)
 
 ## 第一次运行
 
