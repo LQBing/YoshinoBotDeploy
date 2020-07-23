@@ -23,6 +23,7 @@ services:
       - ./data/bot/yobot_data:/workdir/hoshino/modules/yobot/yobot/src/client/yobot_data
       - ./data/bot/static:/workdir/hoshino/modules/yobot/yobot/src/client/public/static/
       - ./data/bot/res:/workdir/res
+      - ./data/bot/conf:/root/.hoshino
     networks:
       - bot_net
 
