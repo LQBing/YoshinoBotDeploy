@@ -11,12 +11,12 @@ services:
     tty: true
     networks:
       - bot_net
-      
+
   bot:
     image: lqbing/yoshino
     restart: always
     env_file: .env
-    ports: 
+    ports:
       - 8000:8000
     volumes:
       - ./data/bot/log:/workdir/log
@@ -27,6 +27,14 @@ services:
     networks:
       - bot_net
 
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/nginxnginx.conf
+      - ./data/bot/res:/workdir/res
+    networks:
+      - bot_net
 networks:
   bot_net:
     driver: bridge
