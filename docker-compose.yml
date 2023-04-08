@@ -1,20 +1,18 @@
 version: "3"
 services:
   mirai:
-    # image: lqbing/go-cqhttp
     image: silicer/go-cqhttp
     restart: always
     env_file: .env
     stdin_open: true
     tty: true
     volumes:
-      - ./device.json:/data/device.json
-      - ./config.yml:/data/config.yml
+      - ./qqdata:/data
     networks:
       - bot_net
 
   bot:
-    image: lqbing/yoshino
+    image: lqbing/yoshino:v2.0.0
     restart: always
     env_file: .env
     ports:
@@ -22,7 +20,6 @@ services:
     volumes:
       - ./data/log:/workdir/log
       - ./data/yobot_data:/workdir/hoshino/modules/yobot/yobot/src/client/yobot_data
-      - ./data/static:/workdir/hoshino/modules/yobot/yobot/src/client/public/static/
       - ./data/res:/workdir/res
       - ./data/conf:/root/.hoshino
     networks:
