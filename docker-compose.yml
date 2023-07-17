@@ -12,7 +12,7 @@ services:
       - bot_net
 
   bot:
-    image: lqbing/yoshino:v2.0.0
+    image: lqbing/yoshino:v2.0.2
     restart: always
     env_file: .env
     ports:
