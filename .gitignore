@@ -1,4 +1,5 @@
 .env
+.napcatenv
 .idea
 /data/
 /tmp/

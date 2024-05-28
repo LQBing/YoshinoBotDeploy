@@ -1,13 +1,16 @@
 version: "3"
 services:
-  mirai:
-    image: silicer/go-cqhttp
+  napcat:
+    env_file: .napcatenv
+    ports:
+        - 3000:3000
+        - 6099:6099
     restart: always
-    env_file: .env
-    stdin_open: true
-    tty: true
+    image: mlikiowa/napcat-docker:latest
     volumes:
-      - ./qqdata:/data
+      - ./data/napcat/QQ:/root/.config/QQ
+      - ./data/napcat/config:/usr/src/app/napcat/config
+      
     networks:
       - bot_net
 
@@ -33,6 +36,7 @@ services:
       - ./data/res:/workdir/res
     networks:
       - bot_net
+
 networks:
   bot_net:
     driver: bridge
